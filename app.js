@@ -2,7 +2,7 @@
 // Word getter and doer with things...
 
 import { wordnikAPIKey, openWeatherAPIKey } from "./keys.js";
-import { getRandom, getRandomInt } from './random.js';
+import { getRandom, getRandomInt, getRandomArrayElement } from './random.js';
 
 
   function createNode(el) {
@@ -48,8 +48,6 @@ const makeCoordinate = (x, y) => {
 // {"id":0,"word":"southwest"}
 // no joke!
 
-// make a call to the url and get back a response
-
 fetch(fullWordnikURL)
   .then(response => (response.json()))
   // .then(data => (console.log(data)))
@@ -66,10 +64,15 @@ fetch(fullWordnikURL)
       const s = getRandom(100, 0);
       const l = getRandom(100, 0);
       const a = getRandom(1, 0);
+      const rotations = [
+        0, 90, 180, 270
+      ];
+      const rotated = getRandomArrayElement(rotations);
       svgText.innerHTML = `${word.word}`;
       svgText.setAttribute('x', coords.x);
       svgText.setAttribute('y', coords.y);
-      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a})`)
+      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a});`);
+      svgText.setAttribute('rotate', `${rotated}`);
       // console.log(svgText.innerHTML);
       append(svg, svgText)
     })
@@ -95,5 +98,3 @@ fetch(weatherURL)
   body.setAttribute(`style`, `background-image: radial-gradient(hsl(${deg}, 72%, 45%), hsl(235, 62%, 73%))`)
 })
 .catch(console.error);
-
-console.log(body.style.backgroundImage);

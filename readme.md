@@ -4,6 +4,8 @@ use two free apis, wordnik and OpenWeather dot com to create a neat graphic on s
 
 ## v.0
 
+- Do something more interesting with the text
+
 - start using some data from the apis ✅
   - wind is used by a gradient ✅
 

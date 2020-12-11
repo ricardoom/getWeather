@@ -8,11 +8,13 @@
   --s1: calc(var(--ratio) * var(--s0));
   --s0: var(--fontSize);
   --giga: 19rem;
+  box-sizing: border-box;
 }
 
 body {
   font-family: sans-serif;
   min-height: 100vh;
+  margin: 0;
 }
 
 h1 {
@@ -26,8 +28,5 @@ p {
 }
 
 text {
-  // color: #fff;
   font-size: var(--s5);
-  fill: #fff;
-  filter: opacity(0.75);
 }
