@@ -28,7 +28,7 @@ const svg = document.querySelector('svg');
 const vw = body.clientWidth;
 const vh = body.clientHeight;
 
-svg.setAttribute('viewBox', `0 0 ${vh} ${vw}`);
+svg.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
 
 // use vh & vw to check make sure values are not out of the screen
 
@@ -62,9 +62,14 @@ fetch(fullWordnikURL)
       let newX = getRandom(vh, 0);
       let newY = getRandom(vw, 0);
       let coords = makeCoordinate(newX, newY);
+      const h = getRandom(360, 1);
+      const s = getRandom(100, 0);
+      const l = getRandom(100, 0);
+      const a = getRandom(1, 0);
       svgText.innerHTML = `${word.word}`;
       svgText.setAttribute('x', coords.x);
       svgText.setAttribute('y', coords.y);
+      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a})`)
       // console.log(svgText.innerHTML);
       append(svg, svgText)
     })
