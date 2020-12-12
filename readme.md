@@ -1,8 +1,10 @@
 # learn react by getting weather and a word
 
-use two free apis, wordnik and OpenWeather dot com to create a neat graphic on screen. Use react. Should be a piece of cake. A walk in the park.
+Use API, offered by Wordnik and OpenWeather dot com to create a neat graphics on screen. Use react. Should be a piece of cake. A walk in the park.
 
 ## v.0
+
+- make a function that takes in data from the two APIs (or more) and spit out an object or and array that can be consumed by functions that do stuff (redraw `<svg>`s in the DOM por ejemplo)
 
 - find opportunities for interactivity
   - animation

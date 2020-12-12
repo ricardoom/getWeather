@@ -88,7 +88,7 @@ fetch(weatherURL)
   const weather = data;
   const { deg, speed } = weather.wind;
   console.log(weather, deg, speed, styleBG);
-  
+  console.log((Math.floor(speed) * Math.ceil(speed) / 10));
 
   // const { ...styles } = body.style;
   // styleBG.setProperty('background', `radial-gradient((hsl(${windDir}, 72%, 65%), hsl(235, 62%, 73%))`)
