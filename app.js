@@ -65,10 +65,11 @@ fetch(fullWordnikURL)
       const l = getRandom(100, 0);
       const a = getRandom(1, 0);
       const rotations = [
-        0, 90, 180, 270
+        0, 90, 180, 270, 45, 135, 285
       ];
       const rotated = getRandomArrayElement(rotations);
       svgText.innerHTML = `${word.word}`;
+      
       svgText.setAttribute('x', coords.x);
       svgText.setAttribute('y', coords.y);
       svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a});`);

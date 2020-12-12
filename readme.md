@@ -4,14 +4,20 @@ use two free apis, wordnik and OpenWeather dot com to create a neat graphic on s
 
 ## v.0
 
-- Do something more interesting with the text
+- find opportunities for interactivity
+  - animation
+  - using native controls
+    - sliders, form controls etc. / et al
+
+- Do something more interesting with the text ✅
 
 - start using some data from the apis ✅
   - wind is used by a gradient ✅
 
 - hook up the apis ✅
-  - weather api
-  - wordnik
+  - weather api ✅
+  - wordnik ✅
+
 - convert text to svg text and print to screen ✅
 
 - set up environment to secure api keys etc. ✅
