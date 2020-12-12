@@ -4,7 +4,11 @@ Use API, offered by Wordnik and OpenWeather dot com to create a neat graphics on
 
 ## v.0
 
-- make a function that takes in data from the two APIs (or more) and spit out an object or and array that can be consumed by functions that do stuff (redraw `<svg>`s in the DOM por ejemplo)
+- show fewer words on screen
+  - cycle through the list instead of writing all of the words to the DOM.
+  - then use React to load in the next set of words.
+
+- make a function that takes in data from the two APIs (or more) and spit out an object or an array that can be consumed by functions that do stuff (Por ejemplo: redraw `<svg>` graphics, shapes, text etc. in the DOM)
 
 - find opportunities for interactivity
   - animation

@@ -7,7 +7,7 @@
   --s2: calc(var(--ratio) * var(--s1));
   --s1: calc(var(--ratio) * var(--s0));
   --s0: var(--fontSize);
-  --giga: 19rem;
+  --giga: calc(var(--0) * 19);
   box-sizing: border-box;
 }
 

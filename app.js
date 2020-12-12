@@ -65,15 +65,16 @@ fetch(fullWordnikURL)
       const l = getRandom(100, 0);
       const a = getRandom(1, 0);
       const rotations = [
-        0, 90, 180, 270, 45, 135, 285
+        0, 90, 180, 270
       ];
       const rotated = getRandomArrayElement(rotations);
       svgText.innerHTML = `${word.word}`;
       
       svgText.setAttribute('x', coords.x);
       svgText.setAttribute('y', coords.y);
-      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a});`);
+      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a}); font-size: var(--s${getRandomInt(5)})`);
       svgText.setAttribute('rotate', `${rotated}`);
+      svgText.setAttribute('transform', `scale(${getRandomInt(15)} ${getRandomInt(15)})`)
       // console.log(svgText.innerHTML);
       append(svg, svgText)
     })
@@ -87,15 +88,10 @@ fetch(weatherURL)
   const styleBG = body.style;
   const weather = data;
   const { deg, speed } = weather.wind;
-  console.log(weather, deg, speed, styleBG);
-  console.log((Math.floor(speed) * Math.ceil(speed) / 10));
+  const { temp } = weather.main;
+  const useSpeed = Math.floor(speed) * 10;
+  console.log(weather, deg, speed, temp, styleBG, useSpeed);
 
-  // const { ...styles } = body.style;
-  // styleBG.setProperty('background', `radial-gradient((hsl(${windDir}, 72%, 65%), hsl(235, 62%, 73%))`)
-  // document.styleSheets[0].cssRules[1].style.backgroundImage = `radial-gradient((hsl(${windDir}, 72%, 45%), hsl(235, 62%, 73%))`;
-  // document.body.style.backgroundImage = "radial-gradient(#456, #678)"
-  // document.body.style.backgroundImage = `radial-gradient((hsl(${deg}, 72%, 45%), hsl(235, 62%, 73%))`;
-
-  body.setAttribute(`style`, `background-image: radial-gradient(hsl(${deg}, 72%, 45%), hsl(235, 62%, 73%))`)
+  body.setAttribute(`style`, `background-image: radial-gradient(hsl(${deg}, 72%, 45%), hsl(${temp}, ${useSpeed}%, ${useSpeed * 1.2}%));`)
 })
 .catch(console.error);
