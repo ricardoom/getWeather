@@ -27,9 +27,10 @@ const svg = document.querySelector('svg');
 
 const vw = body.clientWidth;
 const vh = body.clientHeight;
-
+console.log(vw, vh);
 svg.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
-
+svg.setAttribute('width', vw);
+svg.setAttribute('height', vh);
 // use vh & vw to check make sure values are not out of the screen
 
 const someValue = null;
@@ -57,24 +58,24 @@ fetch(fullWordnikURL)
     words.forEach(word => {
       // let svgText = createNode('text');
       let svgText = document.createElementNS('http://www.w3.org/2000/svg','text');
-      let newX = getRandom(vh, 0);
-      let newY = getRandom(vw, 0);
+      let newY = (getRandomInt(vh));
+      let newX = (getRandomInt(vw));
       let coords = makeCoordinate(newX, newY);
-      const h = getRandom(360, 1);
-      const s = getRandom(100, 0);
-      const l = getRandom(100, 0);
-      const a = getRandom(1, 0);
+      const h = getRandomInt(360);
+      const s = getRandomInt(100);
+      const l = getRandomInt(100);
+      const a = getRandom(1, 0.7);
       const rotations = [
-        0, 90, 180, 270
+        0, 90, 180, 270, 45, 225, 315
       ];
       const rotated = getRandomArrayElement(rotations);
       svgText.innerHTML = `${word.word}`;
       
       svgText.setAttribute('x', coords.x);
-      svgText.setAttribute('y', coords.y);
-      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a}); font-size: var(--s${getRandomInt(5)})`);
+      svgText.setAttribute('y', coords.y); // fix the -y viewBox Viewport thing
+      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a.toFixed(2)}); font-size: var(--s${getRandomInt(5)})`);
       svgText.setAttribute('rotate', `${rotated}`);
-      svgText.setAttribute('transform', `scale(${getRandomInt(15)} ${getRandomInt(15)})`)
+      svgText.setAttribute('transform', `scale(${getRandom(3,1)} ${getRandom(3, 1)}) rotate(${rotated})`)
       // console.log(svgText.innerHTML);
       append(svg, svgText)
     })
