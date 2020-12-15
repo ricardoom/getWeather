@@ -17,7 +17,9 @@ import { getRandom, getRandomInt, getRandomArrayElement } from './random.js';
 
 const wordnikURL = 'http://api.wordnik.com/v4/words.json/randomWords?api_key=';
 
-const fullWordnikURL = `${wordnikURL}${wordnikAPIKey}`;
+const wordnikURLLimited = 'https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=10&maxLength=-1&limit=15&api_key=';
+
+const fullWordnikURL = `${wordnikURLLimited}${wordnikAPIKey}`;
 
 const city_id = 5110302; // Brooklyn Ny, USA
 const weatherURL = `https://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=${openWeatherAPIKey}`
@@ -29,8 +31,10 @@ const vw = body.clientWidth;
 const vh = body.clientHeight;
 console.log(vw, vh);
 svg.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
-svg.setAttribute('width', vw);
-svg.setAttribute('height', vh);
+svg.setAttribute('height', `${vh}`);
+svg.setAttribute('width', `${vw}`);
+// svg.setAttribute('width', vw);
+// svg.setAttribute('height', vh);
 // use vh & vw to check make sure values are not out of the screen
 
 const someValue = null;
@@ -58,24 +62,24 @@ fetch(fullWordnikURL)
     words.forEach(word => {
       // let svgText = createNode('text');
       let svgText = document.createElementNS('http://www.w3.org/2000/svg','text');
-      let newY = (getRandomInt(vh));
-      let newX = (getRandomInt(vw));
+      let newY = (getRandomInt(vw));
+      let newX = (getRandomInt(vh));
       let coords = makeCoordinate(newX, newY);
       const h = getRandomInt(360);
       const s = getRandomInt(100);
       const l = getRandomInt(100);
-      const a = getRandom(1, 0.7);
+      const a = getRandom(1, 0.27);
       const rotations = [
         0, 90, 180, 270, 45, 225, 315
       ];
       const rotated = getRandomArrayElement(rotations);
       svgText.innerHTML = `${word.word}`;
-      
-      svgText.setAttribute('x', coords.x);
-      svgText.setAttribute('y', coords.y); // fix the -y viewBox Viewport thing
-      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a.toFixed(2)}); font-size: var(--s${getRandomInt(5)})`);
+      svgText.setAttribute('transform', `translate(${coords.x * 0.5} ${coords.y * 0.5}) rotate(${rotated})`);
+      svgText.setAttribute('x', coords.x * 0.01);
+      svgText.setAttribute('y', coords.y * 0.01); // fix the -y viewBox Viewport thing
+      svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a.toFixed(2)})`);
       svgText.setAttribute('rotate', `${rotated}`);
-      svgText.setAttribute('transform', `scale(${getRandom(3,1)} ${getRandom(3, 1)}) rotate(${rotated})`)
+      
       // console.log(svgText.innerHTML);
       append(svg, svgText)
     })

@@ -19,9 +19,9 @@ function getRandom(max, min) {
 //   }
 // }
 
-const rotations = [
-  0, 90, 180, 270
-];
+// const rotations = [
+//   0, 90, 180, 270
+// ];
 
 function getRandomArrayElement(array) {
   const random = Math.floor(Math.random() * array.length);
