@@ -106,7 +106,13 @@ fetch(weatherURL)
   .catch(console.error);
 
 const App = () => {
-  return React.createElement('svg', { id: 'babasoon', xmlns: 'http://www.w3.org/2000/svg', viewBox: `0 0 ${vw} ${vh}`},
+  return React.createElement(
+    'svg',
+    { 
+      id: 'babasoon',
+      xmlns: 'http://www.w3.org/2000/svg',
+      viewBox: `0 0 ${vw} ${vh}`
+    },
     [
       React.createElement(SvgTextEl, {
         x: 100,
