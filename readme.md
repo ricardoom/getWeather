@@ -16,7 +16,7 @@ Use API, offered by Wordnik and OpenWeather dot com to create a neat graphics on
 
 - Be more creative w/ the API data being fetched
   - Wind speed could control animation timings / speeds
-  - 
+  - Do more with the words from Wordnik
 
 - Find opportunities for interactivity
   - animation

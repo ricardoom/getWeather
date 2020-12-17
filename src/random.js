@@ -28,5 +28,4 @@ function getRandomArrayElement(array) {
   return array[random];
 }
 
-
-export { getRandom, getRandomInt, getRandomArrayElement }
+export { getRandom, getRandomInt, getRandomArrayElement };
