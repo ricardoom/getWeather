@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 //
 // Word getter and doer with things...
 import React from 'react';
 import { render } from 'react-dom';
 import { wordnikAPIKey, openWeatherAPIKey } from './keys.js';
 import { getRandom, getRandomInt, getRandomArrayElement } from './random.js';
-import SvgTextEl from './SvgTextEl';
+import SvgContainer from './SvgContainer';
 
 const wordnikURLLimited =
   'https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=10&maxLength=-1&limit=15&api_key=';
@@ -23,15 +24,14 @@ const vw = body.clientWidth;
 
 const vh = body.clientHeight;
 
-console.log(vw, vh);
+// console.log(vw, vh);
 
-svg.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
+// svg.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
 svg.setAttribute('height', `${vh}`);
 svg.setAttribute('width', `${vw}`);
 // svg.setAttribute('width', vw);
 // svg.setAttribute('height', vh);
 // use vh & vw to check make sure values are not out of the screen
-
 
 // convert the above to function that returns, the two values as an object
 
@@ -41,16 +41,32 @@ const makeCoordinate = (x, y) => {
 
 // console.log(coords);
 
+function append(parent, el) {
+  return parent.appendChild(el);
+}
+
 // First ever ping to Wordnik and this is what I get back:
 // {"id":0,"word":"southwest"}
 // no joke!
 
+// just get words
+// const getNewWords = async (url) => {
+//   const response = await fetch(url);
+
+//   if (!response.ok) {
+//     throw new Error (`blargh! response failed — status: ${response.error}`)
+//   } else {
+//     const data = await response.json();
+//     return data;
+//   }
+// };
+
+// make the fetch into a reu
+
 fetch(fullWordnikURL)
   .then((response) => response.json())
-  // .then(data => (console.log(data)))
   .then((data) => {
     let words = data;
-
     words.forEach((word) => {
       // let svgText = createNode('text');
       let svgText = document.createElementNS(
@@ -71,18 +87,18 @@ fetch(fullWordnikURL)
         'transform',
         `translate(${coords.x * 0.5} ${coords.y * 0.5}) rotate(${rotated})`
       );
-      svgText.setAttribute('x', coords.x * 0.01);
-      svgText.setAttribute('y', coords.y * 0.01); // fix the -y viewBox Viewport thing
+      svgText.setAttribute('x', Math.trunc(coords.x * 0.01));
+      svgText.setAttribute('y', Math.trunc(coords.y * 0.01)); // fix the -y viewBox Viewport thing
       svgText.setAttribute(
         'style',
         `fill: hsla(${h}, ${s}%, ${l}%, ${a.toFixed(2)})`
       );
       svgText.setAttribute('rotate', `${rotated}`);
 
-      // console.log(svgText.innerHTML);
       append(svg, svgText);
     });
   })
+  // eslint-disable-next-line no-console
   .catch((err) => console.error(err));
 
 // get the weather
@@ -105,12 +121,19 @@ fetch(weatherURL)
   })
   .catch(console.error);
 
-const App = () => {
-  return React.createElement(
-    'svg', {}, []
-  );
-};
+// getNewWords(fullWordnikURL).then((value) => {
+//   // console.log(value);
+//   value.forEach((obj) => console.log(obj.word))
+// });
+
+const vbox = `0 0 ${vw} ${vh}`;
+
+class App extends React.Component {
+  render() {
+    return <SvgContainer viewBox={vbox} y={vw} x={vh} />;
+  }
+}
 
 // Do the React magic here:
 // Render App ->
-render(React.createElement(App), document.getElementById('main'));
+render(<App />, document.getElementById('child'));

@@ -32,7 +32,8 @@ text {
   font-size: var(--s5);
 }
 main {
-  margin: var(--s5);
+  // margin: var(--s5);
 }
-svg {
+svg.first {
+  // display: none;
 }

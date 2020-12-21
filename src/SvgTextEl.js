@@ -1,10 +1,10 @@
 import React from 'react';
 
-/// DO the Reaact stuuf;
-export default function SvgTextEl({ text, x, y }) {
-  // return React.createElement('text', {}, text);
+// Stateless functional component:
+const SvgTextEl = ({ text, x, y, transform, style, rotate }) => (
+  <text x={x} y={y} style={style} rotate={rotate} transform={transform}>
+    {text}
+  </text>
+);
 
-  return (
-    <text x={x} y={y}>{text}</text>
-  )
-};
+export default SvgTextEl;
