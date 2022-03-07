@@ -7,12 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/index.html",
     "rm": "rm -rf .cache/ dist/",
-    "dev": "rm && npm start"  
+    "dev": "npm run rm && npm start"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.30.0"
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.0.0",
+    "sass": "^1.32.0"
   },
   "dependencies": {
     "dotenv": "^8.2.0"
