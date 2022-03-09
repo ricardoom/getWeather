@@ -46,6 +46,26 @@ const makeCoordinate = (x, y) => {
   return { x, y };
 };
 
+// WIP: dynamic Gradient BGs!
+const generateGradients = (type, positions, numbers) => {
+  // returns a comma separated list of css gradients
+  // we pass the type of gradient (conic, linear etc)
+  // take in a number of positions
+  // take a number of gradients to stack
+  let { positions, numbers } = values;
+  if (type === 'conic') {
+    // conics
+    let gradient = `conic-gradient(${{ ...values }})`;
+  } else if (type === 'linear') {
+    // linear
+    let gradient = `linear-gradient(${{ ...values }})`;
+  }
+  type === radial;
+  let gradient = `radial-gradient(${{ ...values }})`;
+
+  return gradient;
+};
+
 // console.log(coords);
 
 // First ever ping to Wordnik and this is what I get back:
