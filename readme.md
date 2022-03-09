@@ -2,11 +2,27 @@
 
 Use API, offered by Wordnik and OpenWeather dot com to create a neat graphics on screen. Use react. Should be a piece of cake. A walk in the park.
 
-## v.0
+## v.1
 
-- Use React on this project
-  - why?
-  - how?
+- Cool things todo for the next version of this since it'g getting dusted off:
+  
+  - Use a reactive framework (React/Vue/Svelte/Alpine/...) for data fetching
+
+  - build a UI to execute / refresh the page
+
+  - enter custom zip
+
+  - Make the center gradient more dynamic ie: move around the screen, not just fixed in the center. Perhaps using more than one gradient
+
+  - Find opportunities for interactivity
+  - animation
+  - using native controls
+    - sliders, form controls etc. / et al
+      - font sizes
+      - colors
+      - positions
+
+## v.0
 
 - Show fewer words on screen
   - cycle through the list instead of writing all of the words to the DOM.
@@ -18,13 +34,7 @@ Use API, offered by Wordnik and OpenWeather dot com to create a neat graphics on
   - Wind speed could control animation timings / speeds
   - 
 
-- Find opportunities for interactivity
-  - animation
-  - using native controls
-    - sliders, form controls etc. / et al
-      - font sizes
-      - colors
-      - positions
+
 
 - Do something more interesting with the text ✅
 

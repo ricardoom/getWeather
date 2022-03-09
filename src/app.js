@@ -54,12 +54,10 @@ const makeCoordinate = (x, y) => {
 
 fetch(fullWordnikURL)
   .then((response) => response.json())
-  // .then(data => (console.log(data)))
   .then((data) => {
     let words = data;
 
     words.forEach((word) => {
-      // let svgText = createNode('text');
       let svgText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       let newY = getRandomInt(vw);
       let newX = getRandomInt(vh);
@@ -78,8 +76,6 @@ fetch(fullWordnikURL)
       svgText.setAttribute('style', `fill: hsla(${h}, ${s}%, ${l}%, ${a.toFixed(2)})`);
       svgText.setAttribute('rotate', `${rotated}`);
       svgText.setAttribute('font-size', `calc(10 * var(--s${fs}))`);
-
-      // console.log(svgText.innerHTML);
       append(svg, svgText);
     });
   })
@@ -90,22 +86,21 @@ fetch(weatherURL)
   .then((response) => response.json())
   .then((data) => {
     const styleBG = body.style;
+    console.log(styleBG);
     const weather = data;
     const { deg, speed } = weather.wind;
     const { temp } = weather.main;
     const useSpeed = Math.floor(speed) * 10;
-    // console.log(weather, deg, speed, temp, styleBG, useSpeed);
-
     body.setAttribute(`style`, `background-image: radial-gradient(hsl(${deg}, 72%, 45%), hsl(${temp}, ${useSpeed}%, ${useSpeed * 1.2}%));`);
   })
   .catch(console.error);
 
-// some attributes to pass in to the attribs arg, should be an array:
+// // some attributes to pass in to the attribs arg, should be an array:
 
-const useWeather = (element, ...attribs) => {
-  element.setAttribute(`style`, `fontSize: ${attribs[0]}`);
-  console.log(element, attribs[0]);
-};
-const incomingWeather = [];
-const weatherUno = useWeather(body, incomingWeather);
-weatherUno;
+// const useWeather = (element, ...attribs) => {
+//   element.setAttribute(`style`, `font-size: ${attribs[0]}`);
+//   console.log(element, attribs[0]);
+// };
+// // const incomingWeather = [];
+// // const weatherUno = useWeather(body, incomingWeather);
+// // weatherUno;

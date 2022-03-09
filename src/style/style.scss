@@ -31,3 +31,11 @@ p {
 // text {
 //   font-size: var(--s5);
 // }
+
+.test {
+  background-image: radial-gradient(), radial-gradient();
+}
+
+.conic-gradient {
+  background: conic-gradient(at 0% 30%, red 10%, yellow 30%, #1e90ff 50%);
+}
